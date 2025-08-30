@@ -3,109 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FixMyTech</title>
+    <title>FixMyTech - Tech Tutorials</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base styles */
-        body {
-            background-color: #000000;
-            color: #00FF00;
-            font-family: 'Courier New', monospace;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #222222;
             line-height: 1.6;
         }
         
-        /* Container for responsive design */
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
-        /* Header styling with responsive logo */
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            overflow-wrap: break-word;
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            padding: 20px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .logo-text {
             font-size: 2rem;
-            margin: 0;
-            padding: 10px;
+            font-weight: 700;
+            color: #212529;
         }
         
-        /* Responsive menu */
-        .menu {
-            margin-left: 10px;
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
         }
         
-        .menu-item {
-            margin-bottom: 1rem;
+        nav a {
+            text-decoration: none;
+            color: #495057;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        nav a:hover {
+            color: #0d6efd;
+        }
+        
+        /* Breadcrumb Styles */
+        .breadcrumb {
+            padding: 15px 0;
+            margin: 10px 0 30px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .breadcrumb-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb-item a {
+            color: #6c757d;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb-item a:hover {
+            color: #0d6efd;
+        }
+        
+        .breadcrumb-divider {
+            color: #adb5bd;
+        }
+        
+        .breadcrumb-item.active {
+            color: #212529;
+            font-weight: 500;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .tutorial-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 4px solid #0d6efd;
+        }
+        
+        .tutorial-card h2 {
+            color: #212529;
+            margin-bottom: 15px;
+        }
+        
+        .tutorial-card p {
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        
+        .tutorial-meta {
+            display: flex;
+            gap: 15px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #0d6efd;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0b5ed7;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+        }
+        
+        .sidebar h3 {
+            color: #212529;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .categories {
+            list-style: none;
+        }
+        
+        .categories li {
+            margin-bottom: 12px;
+        }
+        
+        .categories a {
+            color: #495057;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            transition: color 0.3s;
+        }
+        
+        .categories a:hover {
+            color: #0d6efd;
+        }
+        
+        .count {
+            background: #e9ecef;
+            color: #6c757d;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #212529;
+            color: #f8f9fa;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h4 {
+            color: #fff;
+            margin-bottom: 20px;
             font-size: 1.2rem;
         }
         
-        /* Links */
-        a {
-            color: #00FF00;
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: #adb5bd;
             text-decoration: none;
+            transition: color 0.3s;
         }
         
-        a:hover {
-            text-decoration: underline;
+        .footer-column a:hover {
+            color: #fff;
         }
         
-        /* Blinking cursor animation */
-        .cursor {
-            animation: blink 1s steps(1) infinite;
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #343a40;
+            color: #6c757d;
         }
         
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        
-        /* Mobile responsiveness */
-        @media only screen and (max-width: 640px) {
-            .logo {
-                font-size: 1.5rem; /* Smaller logo on mobile */
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
             }
             
-            .menu-item {
-                font-size: 1rem; /* Smaller menu text on mobile */
-            }
-            
-            body {
-                padding: 10px; /* Less padding on mobile */
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
-        /* Desktop optimization */
-        @media only screen and (min-width: 641px) {
-            .logo {
-                font-size: 2.5rem; /* Larger logo on desktop */
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
             }
             
-            .menu-item {
-                font-size: 1.4rem; /* Larger menu text on desktop */
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">>_<</div>
+                    <div class="logo-text">FixMyTech</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-        <div class="header">
-            <h1 class="logo">>_< FixMyTech | CREDITS TO XKITZ7</h1>
-            <p>===================================================</p>
+        <div class="breadcrumb">
+            <div class="breadcrumb-content">
+                <div class="breadcrumb-item">
+                    <a href="#"><i class="fas fa-home"></i> Home</a>
+                </div>
+                <div class="breadcrumb-divider">/</div>
+                <div class="breadcrumb-item">
+                    <a href="#">Tutorials</a>
+                </div>
+                <div class="breadcrumb-divider">/</div>
+                <div class="breadcrumb-item">
+                    <a href="#">Android</a>
+                </div>
+                <div class="breadcrumb-divider">/</div>
+                <div class="breadcrumb-item active">
+                    Samsung
+                </div>
+            </div>
         </div>
 
-        <div class="menu">
-            <p class="menu-item">[1] <a href="/windows.html">WINDOWS</a></p>
-            <p class="menu-item">[2] <a href="/linux.html">LINUX</a></p>
-            <p class="menu-item">[3] <a href="/android.html">ANDROID</a></p>
-            <p class="menu-item">[4] <a href="/ios.html">IOS</a></p>
-        </div>
+        <div class="main-content">
+            <div class="content">
+                <div class="tutorial-card">
+                    <h2>How to Unlock Bootloader on Samsung Galaxy Devices</h2>
+                    <div class="tutorial-meta">
+                        <span><i class="far fa-clock"></i> 15 min read</span>
+                        <span><i class="far fa-calendar-alt"></i> April 15, 2023</span>
+                        <span><i class="far fa-user"></i> by Alex Chen</span>
+                    </div>
+                    <p>Unlocking the bootloader on your Samsung Galaxy device allows you to install custom ROMs, recoveries, and gain root access. This step-by-step guide will walk you through the process safely.</p>
+                    <a href="#" class="btn">Read Tutorial</a>
+                </div>
 
-        <br>
-        <p>root@fixmytech:~# <span class="cursor">_</span></p>
+                <div class="tutorial-card">
+                    <h2>Fix Battery Drain Issues on Xiaomi Phones</h2>
+                    <div class="tutorial-meta">
+                        <span><i class="far fa-clock"></i> 10 min read</span>
+                        <span><i class="far fa-calendar-alt"></i> March 28, 2023</span>
+                        <span><i class="far fa-user"></i> by Maria Rodriguez</span>
+                    </div>
+                    <p>Is your Xiaomi phone's battery draining too fast? This comprehensive tutorial covers the most effective methods to identify and fix battery drain issues on Xiaomi devices.</p>
+                    <a href="#" class="btn">Read Tutorial</a>
+                </div>
+
+                <div class="tutorial-card">
+                    <h2>Dual Boot Windows and Linux on UEFI Systems</h2>
+                    <div class="tutorial-meta">
+                        <span><i class="far fa-clock"></i> 25 min read</span>
+                        <span><i class="far fa-calendar-alt"></i> March 10, 2023</span>
+                        <span><i class="far fa-user"></i> by James Wilson</span>
+                    </div>
+                    <p>Learn how to safely set up a dual boot system with Windows and Linux on modern UEFI hardware. This guide covers partitioning, bootloader configuration, and common pitfalls to avoid.</p>
+                    <a href="#" class="btn">Read Tutorial</a>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <h3>Categories</h3>
+                <ul class="categories">
+                    <li><a href="#">Android <span class="count">28</span></a></li>
+                    <li><a href="#">iOS <span class="count">15</span></a></li>
+                    <li><a href="#">Windows <span class="count">32</span></a></li>
+                    <li><a href="#">Linux <span class="count">24</span></a></li>
+                    <li><a href="#">UEFI/BIOS <span class="count">12</span></a></li>
+                    <li><a href="#">Samsung <span class="count">18</span></a></li>
+                    <li><a href="#">Xiaomi <span class="count">14</span></a></li>
+                    <li><a href="#">Hardware <span class="count">21</span></a></li>
+                    <li><a href="#">Networking <span class="count">16</span></a></li>
+                </ul>
+            </div>
+        </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>FixMyTech</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Tutorials</h4>
+                    <ul>
+                        <li><a href="#">Android</a></li>
+                        <li><a href="#">iOS</a></li>
+                        <li><a href="#">Windows</a></li>
+                        <li><a href="#">Linux</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">Forums</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Submit Tutorial</a></li>
+                        <li><a href="#">Advertising</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FixMyTech. All rights reserved. fixmytech.pages.dev</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple breadcrumb generation based on page title
+        document.addEventListener('DOMContentLoaded', function() {
+            const pageTitle = document.title;
+            const activeItem = document.querySelector('.breadcrumb-item.active');
+            
+            if (activeItem && pageTitle) {
+                const titleParts = pageTitle.split(' - ');
+                if (titleParts.length > 1) {
+                    activeItem.textContent = titleParts[0];
+                }
+            }
+            
+            // Add responsive menu toggle for mobile
+            const menuToggle = document.createElement('button');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            menuToggle.classList.add('menu-toggle');
+            document.querySelector('.header-content').appendChild(menuToggle);
+            
+            const nav = document.querySelector('nav');
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('show');
+            });
+        });
+    </script>
 </body>
-            </html>
+</html>
