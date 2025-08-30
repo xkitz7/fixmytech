@@ -381,4 +381,44 @@ footer {
 }
 
 .footer-links a {
-    color
+    color: white;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .section, .section-reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    h1 {
+        font-size: 36px;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .container {
+        padding: 40px 20px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
